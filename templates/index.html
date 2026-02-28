@@ -1,3 +1,9 @@
+<!--
+   Interface graphique de la calculatrice pour l'application Flask.
+   Contient la structure HTML de la calculatrice et des boutons d'entrées.
+   La variable 'result' du serveur s'affiche dans le champ en lecture seule.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,11 +43,32 @@
 </div>
 
 <script>
+   /**
+   * Ajoute une valeur à la fin du champ d’affichage de la calculatrice.
+   *
+   * Cette fonction récupère l’élément HTML ayant l’identifiant "display"
+   * et concatène la valeur fournie à son contenu actuel.
+   *
+   * @param {string} value - Caractère ou chaîne à ajouter à l’affichage
+   *                         (ex. chiffre, opérateur, point décimal).
+   *
+   * @returns {void}
+   */
    function appendToDisplay(value) {
       const display = document.getElementById('display');
       display.value += value;
    }
 
+   /**
+   * Réinitialise le champ d’affichage de la calculatrice.
+   *
+   * Cette fonction vide le contenu de l’élément HTML ayant
+   * l’identifiant "display" en assignant une chaîne vide à sa valeur.
+   * Elle est généralement appelée lors de l’appui sur le bouton
+   * "C" ou "Clear" de l’interface.
+   *
+   * @returns {void}
+   */
    function clearDisplay() {
       document.getElementById('display').value = '';
    }
