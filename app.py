@@ -1,3 +1,9 @@
+"""
+Calculatrice web simple utilisant Flask.
+Ce module définit une application web qui permet à l'utilisateur d'entrer une expression arithmétique
+simple (contenant exactement un opérateur) et d'obtenir le résultat du calcul.
+"""
+
 from flask import Flask, request, render_template
 from operators import add, subtract, multiply, divide
 
@@ -11,6 +17,32 @@ OPS = {
 }
 
 def calculate(expr: str):
+    """
+    Évalue une expression arithmétique simple contenant exactement un opérateur.
+
+    La fonction reçoit une chaîne de caractères représentant une expression
+    binaire (ex. : "3+4", "10.5/2"). Les espaces sont ignorés. Un seul
+    opérateur, défini dans le dictionnaire global OPS, est autorisé.
+
+    L'expression doit respecter le format suivant :
+        <nombre><opérateur><nombre>
+
+    Paramètres
+    ----------
+    expr (str) : Chaîne représentant une expression arithmétique simple contenant exactement un opérateur.
+
+    Retour
+    ----------
+    float : Résultat de l'application de l'opérateur aux deux opérandes.
+
+    Exceptions
+    ----------
+    ValueError : Si l'expression est vide.
+    ValueError : Si l'expression n'est pas une chaîne de caractères.
+    ValueError : Si plus d'un opérateur est présent.
+    ValueError : Si l'opérateur est absent ou mal positionné.
+    ValueError : Si les opérandes ne peuvent pas être converties en float.
+    """
     if not expr or not isinstance(expr, str):
         raise ValueError("empty expression")
 
@@ -43,6 +75,25 @@ def calculate(expr: str):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    """
+    Gère la route principale de l'application web.
+
+    Cette fonction affiche l'interface de la calculatrice et traite
+    les soumissions du formulaire. 
+
+    - En méthode GET : elle affiche simplement la page avec un résultat vide.
+    - En méthode POST : elle récupère l'expression envoyée via le formulaire,
+      tente de l'évaluer à l'aide de la fonction `calculate`, puis retourne
+      le résultat ou un message d'erreur en cas d'exception.
+
+    Retour
+    ----------
+    Response : Page HTML générée à partir du template 'index.html', incluant le résultat du calcul ou un message d'erreur.
+
+    Exceptions
+    ----------
+        Les erreurs générées par la fonction `calculate` sont interceptées et converties en message d'erreur affiché à l'utilisateur.
+    """
     result = ""
     if request.method == 'POST':
         expression = request.form.get('display', '')
