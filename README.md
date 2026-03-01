@@ -107,3 +107,11 @@ requirements.txt      # Dépendances Python
 ---
 
 ## Flux de contribution
+Trois Issues ont été ouvertes, une pour chaque bogue. Elles ont chacune été assignées à un membre de l'équipe, puis fermés à la suite du merge.
+
+Trois branches ont été créées pour faire la correction des bogues.
+
+- fix/substract
+- fix/multiply
+- fix/divide
+Trois pull requests ont été faits pour merge les branches de correction des bogues.
