@@ -75,7 +75,7 @@ pip install -r requirements.txt
     ```bash
     py app.py
     ```
-4. Ouvrez dans votre navigateur web préféré `http://127.0.0.1:5000/`
+4. Ouvrez dans votre navigateur web préféré `http://127.0.0.1:5000/`.
 
 ---
 
@@ -86,7 +86,7 @@ Des tests unitaires simples se trouvent dans le répertoire `tests/`. Ils couvre
 Exécutez les tests avec pytest :
 
 ```bash
-pip install pytest            # si ce n’est pas déjà installé
+pip install pytest       # si ce n’est pas déjà installé
 pytest
 ```
 
@@ -99,7 +99,7 @@ Ajoutez des tests supplémentaires en modifiant ou en développant les fichiers 
 app.py                # Application Flask et logique de calcul
 operators.py          # Fonctions d’opérateurs arithmétiques
 static/               # Ressources statiques (CSS)
-templates/            # Modèles HTML pour l’interface web
+templates/            # Modèles HTML pour l’interface graphique web
 tests/                # Squelettes de tests unitaires
 README.md             # Cette documentation
 requirements.txt      # Dépendances Python
